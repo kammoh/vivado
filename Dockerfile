@@ -13,20 +13,18 @@ RUN apt-get update && apt-get install -y \
     && rm -rf /var/lib/apt/lists/* \
     && rm -rf /src/*.deb
 
-ARG SETUP
+ARG VERSION
 ADD install_config.txt /tmp/install_config.txt
-ENV SETUP ${SETUP}
-ADD ${SETUP} /tmp/${SETUP}
-RUN chmod +x /tmp/${SETUP}
-RUN /tmp/${SETUP} --nox11 --noexec --target /opt/vivado_installer
-RUN rm -rf /tmp/${SETUP}
+ENV VERSION=${VERSION}
+ENV TARBALL=Xilinx_Vivado_SDK_${VERSION}.tar.gz
+ADD ${TARBALL} /tmp/
+#RUN tar xvzf /tmp/x.tar.gz
+#RUN rm -rf /tmp/x.tar.gz
 
-RUN /opt/vivado_installer/xsetup --agree 3rdPartyEULA,WebTalkTerms,XilinxEULA  -e "Vivado HL WebPACK" --location "/opt/Xilinx" -c /tmp/install_config.txt --batch Interactive
 
-#RUN rm -rf /opt/vivado_installer
+RUN bash /tmp/Xilinx_Vivado_SDK_${VERSION}/xsetup --agree 3rdPartyEULA,WebTalkTerms,XilinxEULA  -e "Vivado HL WebPACK" --location "/opt/Xilinx" -c /tmp/install_config.txt --batch Install
 
-#RUN /tmp/Xilinx_Vivado_SDK_2017.3_1005_1/xsetup --agree 3rdPartyEULA,WebTalkTerms,XilinxEULA --batch Install -c /tmp/install_config.txt
-#RUN rm -rf /tmp/*
+#RUN rm -rf Xilinx_Vivado_SDK_${vivado_version}
 
 #RUN adduser --disabled-password --gecos '' vivado
 #USER vivado
