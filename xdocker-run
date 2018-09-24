@@ -1,0 +1,6 @@
+#!/bin/sh
+
+xhost + "127.0.0.1" >/dev/null
+
+# net=host does not currently work on Mac and switches back to bridge
+docker run --net=host -e DISPLAY=host.docker.internal:0 -e XAUTHORITY=/root/.Xauthority -v "$HOME"/.Xauthority:/root/.Xauthority -v /tmp/.X11-unix:/tmp/.X11-unix  $@
