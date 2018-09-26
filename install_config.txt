@@ -5,7 +5,7 @@ Edition=Vivado HL WebPACK
 Destination=/opt/Xilinx
 
 # Choose the Products/Devices the you would like to install.
-Modules=DocNav:0,Kintex UltraScale:0,Virtex UltraScale+ HBM ES:0,Spartan-7:0,Artix-7:1,Model Composer:0,ARM Cortex-A53:0,Zynq UltraScale+ MPSoC:0,Zynq-7000:0,SDK Core Tools:0,ARM Cortex-A9:0,ARM Cortex R5:0,Virtex UltraScale+ 58G ES:0,Zynq UltraScale+ MPSoC ES:0,System Generator for DSP:0,Kintex-7:0,Kintex UltraScale+:0,MicroBlaze:0
+Modules=DocNav:0,Kintex UltraScale:0,Virtex UltraScale+ HBM ES:0,Spartan-7:0,Artix-7:0,Model Composer:0,ARM Cortex-A53:0,Zynq UltraScale+ MPSoC:0,Zynq-7000:1,SDK Core Tools:0,ARM Cortex-A9:0,ARM Cortex R5:0,Virtex UltraScale+ 58G ES:0,Zynq UltraScale+ MPSoC ES:0,System Generator for DSP:0,Kintex-7:0,Kintex UltraScale+:0,MicroBlaze:0
 
 # Choose the post install scripts you'd like to run as part of the finalization step. Please note that some of these scripts may require user interaction during runtime.
 InstallOptions=Enable WebTalk for SDK to send usage statistics to Xilinx:1

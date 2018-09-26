@@ -22,9 +22,7 @@ ADD ${TARBALL} /tmp/
 #RUN rm -rf /tmp/x.tar.gz
 
 
-RUN bash /tmp/Xilinx_Vivado_SDK_${VERSION}/xsetup --agree 3rdPartyEULA,WebTalkTerms,XilinxEULA  -e "Vivado HL WebPACK" --location "/opt/Xilinx" -c /tmp/install_config.txt --batch Install
-
-#RUN rm -rf Xilinx_Vivado_SDK_${vivado_version}
+RUN bash /tmp/Xilinx_Vivado_SDK_${VERSION}/xsetup --agree 3rdPartyEULA,WebTalkTerms,XilinxEULA  -e "Vivado HL WebPACK" --location "/opt/Xilinx" -c /tmp/install_config.txt --batch Install && rm -rf /tmp/Xilinx_Vivado_SDK_${VERSION}; rm -rf rm -rf /opt/Xilinx/.xinstall; rm -rf /opt/Xilinx/Vivado/2018.2/msys64; rm -rf /opt/Xilinx/Vivado/2018.2/ids_lite/ ;  rm -rf /opt/Xilinx/xic/
 
 #RUN adduser --disabled-password --gecos '' vivado
 #USER vivado
