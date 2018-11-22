@@ -1,3 +1,8 @@
 #!/bin/sh
+CONT_CUR_DIR=/cur_dir
 
-xdocker-run --rm -e PATH="/opt/Xilinx/Vivado/2018.2/bin:/usr/bin:/bin" -v ~/source/vivado:/source vivado `basename $0` $@
+ENV_LIST=$(env |egrep -v "^PATH=|^_=|^LD_LIBRARY|^PWD=|^LANG=|^TERM=|^TERM_PROGRAM|^LESS=|^DISPLAY=|^LANG=|^SHELL=|^TMPDIR=|^HOME=|^LS=|^PWD=|^OLDPWD=|^USER=|^LESS_TERMCAP_me=|^PS1=|^PS2=|^LOGNAME=|^EDITOR=|^PAGER=|^Apple|^ANDROID|^LS_|^LESSOPEN=|^LESS_"|less)
+
+ENVS=$(for e in ${ENV_LIST}; do echo "-e $e "; done)
+
+xdocker-run --rm -e PATH="/opt/Xilinx/Vivado/2018.2/bin:/usr/bin:/bin" -v ~/source/vivado:/source -v ${PWD}:${CONT_CUR_DIR} -w ${CONT_CUR_DIR} ${ENVS} vivado `basename $0` $@
